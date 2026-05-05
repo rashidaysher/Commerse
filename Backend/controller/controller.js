@@ -30,6 +30,23 @@ export const createProduct= async (req, res) => {
 
 };
 
+// export const updatedProduct = async (req, res) => {
+//     const {id} = req.params
+    
+
+   
+//     if(!mongoose.Types.ObjectId.isValid(id)) {
+//         return res.status(404).json({success: false, message: "invalid product Id"});
+//     }
+
+//     try {
+//         const updatedProduct = await Product.findByIdAndUpdate(id, Product, {new:true});
+//         res.status(200).json({success: true, data: updatedProduct});
+//     } catch (error) {
+//         res.status(500).json({success: false, message: "server error"});
+//     }
+// };
+
 export const updatedProduct = async (req, res) => {
     const {id} = req.params
     
@@ -40,7 +57,10 @@ export const updatedProduct = async (req, res) => {
     }
 
     try {
-        const updatedProduct = await Product.findByIdAndUpdate(id, Product, {new:true});
+        const updatedProduct = await Product.findByIdAndUpdate(id, req.body, {
+            new: true,
+            runValidators: true,
+        });
         res.status(200).json({success: true, data: updatedProduct});
     } catch (error) {
         res.status(500).json({success: false, message: "server error"});
