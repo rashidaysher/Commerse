@@ -1,11 +1,11 @@
 import { Container, Flex, Text, Button, HStack, useColorMode } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { CiSquarePlus } from "react-icons/ci";
+import { CiSquarePlus, IoMoon, LuSun } from "react-icons/ci";
 
 const Navbar = function () {
   const{ colorMode, toogleColorMode} = useColorMode();
   return ( 
-    <Container maxW={"1140px"} px={4}>
+    <Container maxW={"1140px"} px={4.2}>
       <Flex
         h={16}
         alignItems={"center"}
@@ -32,7 +32,7 @@ const Navbar = function () {
               <CiSquarePlus fontSize={20} />
             </Button>
           </Link>
-          <Button onClick ={toogleColorMode}>{colorMode === "light"? "🌙" : "☀️"}
+          <Button onClick ={toogleColorMode}>{colorMode === "light"? <IoMoon/> : <LuSun size="20"/>}
               
             </Button>
         </HStack>
